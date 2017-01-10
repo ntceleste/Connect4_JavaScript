@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="connect4">
+<head>
+    <link rel="stylesheet" href="connect4.css">
+    <script src="angular.js"></script>
+    <script src="boardcoordinate.js"></script>
+    <script src="adjacencyzone.js"></script>
+    <script src="playerid.js"></script>
+    <script src="space.js"></script>
+    <script src="board.js"></script>
+    <script src="spacegroup.js"></script>
+    <script src="boardanalyzer.js"></script>
+    <script src="humanplayer.js"></script>
+    <script src="computerplayer.js"></script>
+    <script src="gamestate.js"></script>
+    <script src="app.js"></script>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h1>Connect4</h1>
+<div ng-controller="GameController">
+	<div class="buttonRow">
+		<div class="buttonHolder" ng-repeat="n in [0,1,2,3,4,5,6]">
+			<div class="button" ng-click="dropToken(n)">
+				&nbsp;
+			</div>
+		</div>
+	</div>
+	<div class="column" ng-repeat="column in game.board.spaces">
+		<div class="space" ng-repeat="space in column">
+		<div class="circle" id="space{{ space.boardCoordinate.column }}{{ space.boardCoordinate.row }}">
+			<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+			  <circle cx="100" cy="100" r="75" fill="{{ space.playerID | color}}"/>
+			</svg>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div id="message"></div>
+<button onclick="location.reload();">Start a New Game</button>
+
+</body>
+</html>
